@@ -6,6 +6,7 @@ const User = require('../models/user');
 
 const registerUser = async (req, res, role) => {
     console.log(req.body,"req.body");
+    console.log(role,"role");
     const { firstName, lastName, email, password } = req.body;
 
     if (!firstName || !lastName || !email || !password) {

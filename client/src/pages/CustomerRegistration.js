@@ -11,6 +11,8 @@ const CustomerRegistration = () => {
         password: '',
     });
 
+    const [error, setError] = useState(null);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -18,18 +20,19 @@ const CustomerRegistration = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData,"formData");
         try {
             const response = await axios.post('http://localhost:5000/api/register/customer', formData);
             alert(response.data.message);
         } catch (error) {
             console.error('Registration error:', error);
+            setError(error.response?.data || 'An error occurred during registration. Please try again.');
         }
     };
 
     return (
         <div>
             <h2>Customer Registration</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <InputField label="First Name" type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
                 <InputField label="Last Name" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />

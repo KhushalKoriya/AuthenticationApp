@@ -1,0 +1,24 @@
+/* src/components/RegistrationTabs.css */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid #007bff;
+    background: none;
+    color: #007bff;
+}
+
+.tabs button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
